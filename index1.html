@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love Vidhii❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff5f8a, #ff9a9e);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 30px 15px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 { font-size: 2.4em; }
+h2 { font-weight: 300; }
+
+.typing {
+    font-size: 1.2em;
+    min-height: 70px;
+    margin: 20px 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+button {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.05em;
+    cursor: pointer;
+    background: white;
+    color: #ff4b7d;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: #ffe6ec;
+}
+
+footer {
+    margin: 40px 0;
+    opacity: 0.9;
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: rgba(255,255,255,0.8);
+    animation: floatUp 6s linear infinite;
+    font-size: 20px;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+audio { display: none; }
+
+#qr img {
+    margin-top: 20px;
+    border-radius: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<div class="container">
+    <h1>Hey My Love ❤️</h1>
+    <h2>This page is just for you</h2>
+    <div class="message">
+        Every moment with you feels special.<br>
+        Your smile fixes my worst days,<br>
+        and your presence feels like home.<br><br>
+
+        I don’t know what the future holds,<br>
+        but I know one thing for sure —<br>
+        I want **you** in it.
+    </div>
+
+    <div class="typing" id="typing"></div>
+
+    
+
+    <button onclick="askForever()">Wanna be mine forever? 💖</button>
+
+    <div id="qr">
+        <p>Scan this QR 💌</p>
+    </div>
+
+    <footer>
+        Made with ❤️ by <b>Kush</b>
+    </footer>
+</div>
+
+<script>
+// Typing animation
+const text = [
+  "Every moment with you feels magical ✨",
+  "Your smile is my favorite sight 💕",
+  "No matter where life takes us…",
+  "I just want you by my side ❤️"
+];
+let line = 0, char = 0;
+const typingDiv = document.getElementById("typing");
+
+function typeEffect() {
+    if (char < text[line].length) {
+        typingDiv.innerHTML += text[line].charAt(char);
+        char++;
+        setTimeout(typeEffect, 60);
+    } else {
+        setTimeout(() => {
+            typingDiv.innerHTML = "";
+            char = 0;
+            line = (line + 1) % text.length;
+            typeEffect();
+        }, 1800);
+    }
+}
+typeEffect();
+
+// Floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+    heart.innerHTML = "❤️";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+// Forever question
+function askForever() {
+    if (confirm("So… wanna be mine forever? ❤️")) {
+        alert("You just made me the happiest person alive 💕");
+    } else {
+        alert("That’s okay… my heart still chooses you ❤️");
+    }
+}
+
+// QR Code
+const url = window.location.href;
+const qrImg = document.createElement("img");
+qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+document.getElementById("qr").appendChild(qrImg);
+</script>
+
+</body>
+</html>
